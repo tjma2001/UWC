@@ -3,4 +3,4 @@ Course Materials for Business Application Development
 
 Updated change to readme
 
-Made more changes
+Make a note to update students on git process.
