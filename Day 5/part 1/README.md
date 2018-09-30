@@ -1,0 +1,1 @@
+live demonstration of inline javascript
