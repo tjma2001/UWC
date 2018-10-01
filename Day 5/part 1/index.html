@@ -8,27 +8,41 @@
             href="bulma.min.css" />
     </head>
     <body>
+        <script>
+            function hoverOverSurname() {
+                alert("hovering over surname")
+            }
+        </script>
+        
+        
+        
         <h2>This is an example of a form</h2>
         <div class="container">
-            <form class="form">
+            <form class="form">onmouseover
                 <div class="field">
                     <label class="label">name</label>
-                    <input class="input" type="text"/>
+                    <input 
+                        class="input" 
+                        type="text" 
+                        onmouseover="alert('you hovered over name')"/>
                 </div>
                 
                 <div class="field">
                     <label class="label">surname</label>
-                    <input class="input" type="text"/>
+                    <input 
+                        class="input" 
+                        type="text"
+                        onmouseover="hoverOverSurname()"/>
                 </div>
 
                 <div class="field">
                     <label class="label">age</label>
-                    <input class="input" type="number"/>
+                    <input class="input" type="number"/>onmouseover
                 </div>
 
                 <div class="field">
                     <label class="label">gender</label>
-                    <input class="input" type="text"/>
+                    <input claalertss="input" type="text"/>
                 </div>
 
                 <div class="field">
@@ -44,9 +58,9 @@
                 <div class="field">
                     <input 
                         type="submit" 
-                        value="submit" 
+                        value="press" 
                         class="button is-primary"
-                        onclick=""/>
+                        onclick="alert('clicked on the submit button')"/>
                 </div>
             </form>
         </div>
