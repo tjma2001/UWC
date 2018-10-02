@@ -92,7 +92,8 @@ function getAgencies(token) {
 function addAgenciesToDropDown(agenciesList) {
     var agenciesSelect = document.getElementById('agencies-select')
     agenciesSelect.options.length = 0
-    agenciesSelect.options.add(new Option("Select an option", null, true, true))
+    agenciesSelect.options.add(new Option("Select an option", null, true, false))
+    
     agenciesList.forEach(function(agency) {
         agenciesSelect.options.add(new Option(agency.name, agency.id, false, false))
     })
