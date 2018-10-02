@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Connecting to the WhereIsMyTransport API</title>
+    <link 
+        rel="stylesheet" 
+        type="text/css" 
+        media="screen" 
+        href="bulma.min.css" />
+  </head>
+  <body>
+    <br />
+    <div class="container columns is-fluid" id="login-container">
+
+      <!-- this will list the login form -->
+      <div class="container" id="login-form">
+        <form class="form is-half" >
+          <div class="field">
+            <label class="label">Client Id</label>
+              <input
+                id="client-id" 
+                class="input" 
+                type="text" />
+          </div>
+
+          <div class="field">
+            <label class="label">Client Secret</label>
+              <input
+                id="client-secret" 
+                class="input" 
+                type="text" />
+          </div>
+
+          <div class="field">
+            <input type="submit" id="submit" class="button is-primary" />
+          </div>
+        </form>
+      </div>
+
+      
+      <!-- This will list the agencies -->
+      <div class="container" id="agencies-form">
+        <form class="form is-half">
+          <div class="field">
+            <label class="label">Agencies</label>
+            <select id="agencies-select" type="text" >
+              <option value="" disabled="disabled">No agencies available</option>
+            </select>
+          </div>
+          
+          <div class="field">
+            <input type="submit" id="submit-agency" class="button is-primary"/>
+          </div>
+        </form>
+      </div>
+
+      <!-- this form will list the lines -->
+      <div class="container" id="lines-form">
+        <form class="form is-half" >
+          <div class="field">
+            <label class="label">Lines</label>
+            <select id="lines-select" type="text" >
+              <option value="" disabled="disabled">No lines available</option>
+            </select>
+          </div>
+          
+          <div class="field">
+            <input type="submit" id="submit-goto-agencies" value="back" class="button is-link" />
+            <input type="submit" id="submit-lines" class="button is-primary" />
+          </div>
+        </form>
+      </div>
+
+      <!-- this will show a logout button -->
+      <div class="container" id="logout-form">
+        <form class="form is-half">
+          <div class="field navbar-end">
+            <input type="submit" id="submit-logout" value="logout" class="button is-danger"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
