@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Connecting to the WhereIsMyTransport API</title>
+    <link 
+      rel="stylesheet" 
+      type="text/css" 
+      media="screen" 
+      href="bulma.min.css" />
+    <link 
+      href='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' 
+      rel='stylesheet' />
+    <style>
+      html, body { height: 100vh; }
+      .untested {
+        position: absolute;
+        width: 100%;
+        top: 30%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <br />
+    <div class="container columns is-fluid">
+      <!-- this will show a logout button -->
+      <div class="container" id="logout-form">
+        <form class="form is-half">
+          <div class="field navbar-end">
+            <input type="submit" id="submit-logout" value="logout" class="button is-danger"/>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="container columns is-fluid" id="login-container">
+
+      <!-- this will list the login form -->
+      <div class="container" id="login-form">
+        <form class="form is-half" >
+          <div class="field">
+            <label class="label">Client Id</label>
+              <input
+                id="client-id" 
+                class="input" 
+                type="text" />
+          </div>
+
+          <div class="field">
+            <label class="label">Client Secret</label>
+              <input
+                id="client-secret" 
+                class="input" 
+                type="text" />
+          </div>
+
+          <div class="field">
+            <input type="submit" id="submit" class="button is-primary" />
+          </div>
+        </form>
+      </div>
+
+      <div class="container" id="journey-form">
+        <form class="form">
+          <div class="field">
+            <label class="label">Start</label>
+            <input class="input" id="start" />
+          </div>
+
+          <div class="field">
+            <label class="label">Destination</label>
+            <input class="input" id="destination" />
+          </div>
+
+          <div class="field">
+            <input type="submit" class="submit" value="find" id="submit-find">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id='map'  class="untested"></div>
+    
+    <script src="script.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+  </body>
+</html>
