@@ -11,9 +11,9 @@
     <br />
     <div class="container columns is-fluid" id="login-container">
 
-      <!-- this is the login form-->
+      <!-- this will list the login form -->
       <div class="container" id="login-form">
-        <form class="form is-half">
+        <form class="form is-half" >
           <div class="field">
             <label class="label">Client Id</label>
               <input
@@ -31,12 +31,13 @@
           </div>
 
           <div class="field">
-            <input type="submit" id="submit" value="login" class="button is-primary" />
+            <input type="submit" id="submit" class="button is-primary" />
           </div>
         </form>
       </div>
 
-      <!-- This will list the agencies-->
+      
+      <!-- This will list the agencies -->
       <div class="container" id="agencies-form">
         <form class="form is-half">
           <div class="field">
@@ -47,12 +48,12 @@
           </div>
           
           <div class="field">
-            <input type="submit" id="submit-agency" value="select agency" class="button is-primary"/>
+            <input type="submit" id="submit-agency" class="button is-primary"/>
           </div>
         </form>
       </div>
 
-      <!-- this form will list the lines-->
+      <!-- this form will list the lines -->
       <div class="container" id="lines-form">
         <form class="form is-half" >
           <div class="field">
@@ -63,27 +64,21 @@
           </div>
           
           <div class="field">
-            <input type="submit" id="submit-lines" value="select line" class="button is-primary"/>
+            <input type="submit" id="submit-goto-agencies" value="back" class="button is-link" />
+            <input type="submit" id="submit-lines" class="button is-primary" />
           </div>
         </form>
       </div>
 
-      <!-- logout form -->
+      <!-- this will show a logout button -->
       <div class="container" id="logout-form">
         <form class="form is-half">
-          <div class="field">
-            <input
-              type="submit" 
-              id="submit-logout" 
-              value="logout" 
-              class="button is-danger" />
+          <div class="field navbar-end">
+            <input type="submit" id="submit-logout" value="logout" class="button is-danger"/>
           </div>
         </form>
       </div>
-      
     </div>
-
-    
 
     <script src="script.js"></script>
   </body>
