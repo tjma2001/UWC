@@ -198,19 +198,20 @@ function addLinesToDropdown(linesList) {
 }
 
 function getJourney(token) {
+    var start = document.getElementById('start').value
+    var destination = document.getElementById('destination').value
+    
+    start = start.split(',')
+    destination = destination.split(',')
+
+    
     var request = new XMLHttpRequest();
     var payload = {
         "geometry": {
             "type": "MultiPoint",
             "coordinates": [
-                [
-                    18.37755,
-                    -33.94393
-                ],
-                [
-                    18.41489,
-                    -33.91252
-                ]
+                start,
+                destination
             ]
         },
         "maxItineraries": 5
@@ -218,7 +219,7 @@ function getJourney(token) {
 
     request.addEventListener('load', function () {
         var response = JSON.parse(this.responseText);
-        console.log(response)
+        //console.log(response)
     });
     request.open('POST', 'https://platform.whereismytransport.com/api/journeys', true);
     request.setRequestHeader('Accept', 'application/json');
