@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <title>Connecting to the WhereIsMyTransport API</title>
+    <link 
+        rel="stylesheet" 
+        type="text/css" 
+        media="screen" 
+        href="bulma.min.css" />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+    <br />
+    <div class="container columns is-fluid" id="login-container">
+
+      <!-- this is the login form-->
+      <div class="container" id="login-form">
+        <form class="form is-half">
+          <div class="field">
+            <label class="label">Client Id</label>
+              <input
+                id="client-id" 
+                class="input" 
+                type="text" />
+          </div>
+
+          <div class="field">
+            <label class="label">Client Secret</label>
+              <input
+                id="client-secret" 
+                class="input" 
+                type="text" />
+          </div>
+
+          <div class="field">
+            <input type="submit" id="submit" value="login" class="button is-primary" />
+          </div>
+        </form>
+      </div>
+
+      <!-- This will list the agencies-->
+      <div class="container" id="agencies-form">
+        <form class="form is-half">
+          <div class="field">
+            <label class="label">Agencies</label>
+            <select id="agencies-select" type="text" >
+              <option value="" disabled="disabled">No agencies available</option>
+            </select>
+          </div>
+          
+          <div class="field">
+            <input type="submit" id="submit-agency" value="select agency" class="button is-primary"/>
+          </div>
+        </form>
+      </div>
+
+      <!-- this form will list the lines-->
+      <div class="container" id="lines-form">
+        <form class="form is-half" >
+          <div class="field">
+            <label class="label">Lines</label>
+            <select id="lines-select" type="text" >
+              <option value="" disabled="disabled">No lines available</option>
+            </select>
+          </div>
+          
+          <div class="field">
+            <input type="submit" id="submit-lines" value="select line" class="button is-primary"/>
+          </div>
+        </form>
+      </div>
+
+      <!-- jouney form -->
+      <div class="container" id="journey-form">
+        <form class="form">
+          <div class="field">
+            <label class="label">START:</label>
+            <input class="input" id="start" />
+          </div>
+
+          <div class="field">
+            <label class="label">DESTINATION:</label>
+            <input class="input" id="destination" />
+          </div>
+
+          <div class="field">
+            <input class="button is-primary" id="submit-journey" value="search"/>
+          </div>
+        </form>
+      </div>
+      
+      <!-- logout form -->
+      <div class="container" id="logout-form">
+        <form class="form is-half">
+          <div class="field">
+            <input
+              type="submit" 
+              id="submit-logout" 
+              value="logout" 
+              class="button is-danger" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container is-fullhd" id="map-form" style="width: 100vw">
+      <div id='map' style='width: 100vw; height: 600px;'></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

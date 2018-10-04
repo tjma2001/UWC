@@ -2,12 +2,44 @@ window.onload = function() {
     show('login-form')
 
     try {
-        getAgencies(getToken())
+        getToken()
+        show('journey-form')
     } catch (error) {
         console.log("Unable to get token. There was an error")
     }
 
+    loadMap()
+    loadButtonEvents()   
+}
 
+function loadMap() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoidXdjbGVjdHVyZXIiLCJhIjoiY2ptdWJ6aWt1MGQ4aDN3bzhiM2V1dnRiYyJ9.lWYq773rwVmRzbyHcYAVHw'
+    window.map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        center: [18.4241, -33.9249], // starting position [lng, lat]
+        zoom: 9
+    })
+
+    window.startPin = new mapboxgl.Marker({ draggable: true }).setLngLat([0, 0]).addTo(window.map)
+    window.destinationPin = new mapboxgl.Marker({ draggable: true }).setLngLat([0, 0]).addTo(window.map)
+
+    window.map.on('click', function (event) {
+        console.log(event)
+        if(window.startPoint == true) {
+            window.destinationPin.setLngLat(event.lngLat)
+            window.startPoint = false
+            document.getElementById('destination').value = event.lngLat.lng + ',' + event.lngLat.lat 
+        } else {
+            window.startPin.setLngLat(event.lngLat)
+            window.startPoint = true
+            document.getElementById('start').value = event.lngLat.lng + ',' + event.lngLat.lat
+        }
+    })
+
+}
+
+function loadButtonEvents() {
     var submitButton = document.getElementById('submit')
     submitButton.addEventListener('click', function (event) {
         event.preventDefault()
@@ -24,7 +56,7 @@ window.onload = function() {
 
         var agencies = document.getElementById('agencies-select')
         var selectedAgency = agencies.options[agencies.selectedIndex].value
-                
+
         getLines(getToken(), selectedAgency)
     })
 
@@ -34,12 +66,34 @@ window.onload = function() {
 
         localStorage.removeItem('token')
         localStorage.removeItem('storageDate')
+
+        show('login-form')
+    })
+
+    var journeyButton = document.getElementById('submit-journey')
+    journeyButton.addEventListener('click', function (event) {
+        event.preventDefault()
+        var start = document.getElementById('start').value
+        var destination = document.getElementById('destination').value
+
+        alert(start + ',' + destination)
     })
 }
 
 function show(formId) {
-    console.log("hiding elements")
     document.getElementById('login-form').style.display = 'none'
+    document.getElementById('agencies-form').style.display = 'none'
+    document.getElementById('lines-form').style.display = 'none'
+    document.getElementById('logout-form').style.display = 'none'
+    document.getElementById('map-form').style.display = 'none'
+    document.getElementById('journey-form').style.display = 'none'
+
+    document.getElementById(formId).style.display = 'block'
+
+    if(formId != 'login-form') {
+        document.getElementById('logout-form').style.display = 'block'
+        document.getElementById('map-form').style.display = 'block'
+    }
 }
 
 function getToken() {
@@ -82,7 +136,7 @@ function login(clientId, clientSecret) {
             localStorage.setItem('token', token)
             localStorage.setItem('storageDate', Date.now().toLocaleString())
 
-            getAgencies(getToken())
+            show('journey-form')
         } else {
             console.log("get token call failed")
         }
@@ -123,6 +177,7 @@ function getLines(token, agency)  {
     var request = new XMLHttpRequest();
     request.addEventListener('load', function () {
         var response = JSON.parse(this.responseText);
+        show('lines-form')
         addLinesToDropdown(response)
     });
     request.open('GET', 'https://platform.whereismytransport.com/api/lines?agencies=' + agency, true);

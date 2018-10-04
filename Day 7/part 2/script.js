@@ -3,6 +3,7 @@ window.onload = function() {
 
     try {
         getAgencies(getToken())
+        show('agencies-form')
     } catch (error) {
         console.log("Unable to get token. There was an error")
     }
@@ -24,7 +25,7 @@ window.onload = function() {
 
         var agencies = document.getElementById('agencies-select')
         var selectedAgency = agencies.options[agencies.selectedIndex].value
-                
+
         getLines(getToken(), selectedAgency)
     })
 
@@ -34,12 +35,21 @@ window.onload = function() {
 
         localStorage.removeItem('token')
         localStorage.removeItem('storageDate')
+
+        show('login-form')
     })
 }
 
 function show(formId) {
-    console.log("hiding elements")
     document.getElementById('login-form').style.display = 'none'
+    document.getElementById('agencies-form').style.display = 'none'
+    document.getElementById('lines-form').style.display = 'none'
+    document.getElementById('logout-form').style.display = 'none'
+
+    document.getElementById(formId).style.display = 'block'
+    if(formId != 'login-form') {
+        document.getElementById('logout-form').style.display = 'block'
+    }
 }
 
 function getToken() {
@@ -82,6 +92,7 @@ function login(clientId, clientSecret) {
             localStorage.setItem('token', token)
             localStorage.setItem('storageDate', Date.now().toLocaleString())
 
+            show('agencies-form')
             getAgencies(getToken())
         } else {
             console.log("get token call failed")
@@ -123,6 +134,7 @@ function getLines(token, agency)  {
     var request = new XMLHttpRequest();
     request.addEventListener('load', function () {
         var response = JSON.parse(this.responseText);
+        show('lines-form')
         addLinesToDropdown(response)
     });
     request.open('GET', 'https://platform.whereismytransport.com/api/lines?agencies=' + agency, true);
