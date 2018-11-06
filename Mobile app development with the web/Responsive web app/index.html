@@ -3,23 +3,53 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" src="bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="bulma.min.css">
+    <link rel="manifest" href="/manifest.json">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   
   <body>
     <section class="section">
-      <div class="container">
-        <h1 class="title">
-          Welcome
+      <div class="container has-texgt-centered">
+        <h1 class="is-size-1">
+            Transporter
         </h1>
-        <p class="subtitle">
-          responsive web application
-        </p>
       </div>
-      <div class="container">
-        
+      <div class="container has-text-centered">
+        <div class="">
+          <i class="fas fa-train fa-7x"></i>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 2em">
+        <form class="form">
+          <div class="field">
+            <div class="control">
+              <input type="text" class="input" placeholder="username">
+            </div>
+          </div>
+  
+          <div class="field">
+            <div class="control">
+              <input type="password" class="input" placeholder="password">
+            </div>
+          </div>
+            
+          <div class="field is-grouped is-grouped-centered" style="margin-top: 2rem">
+            <div class="control">
+              <button class="button is-black" style="padding-left: 4em; padding-right: 4em">Login</button>
+            </div>
+          </div>
+  
+          <div class="field is-grouped is-grouped-centered" style="margin-top: 2em">
+            <div class="has-text-centered">
+              Don't have an account?
+              <br />
+              <span class="is-link"><u class="is-black">Sign up</u></span>
+            </div>
+          </div>
+        </form>
       </div>
     </section>
+    <script src="main.js"></script>
   </body>
 </html>
