@@ -1,7 +1,7 @@
 {
   "name": "Transporter",
   "short_name": "Transporter",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
   "description": "A simple app that searches public transport routes.",
