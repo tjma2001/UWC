@@ -1,0 +1,17 @@
+{
+  "name": "Transporter",
+  "short_name": "Transporter",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A simple app that searches public transport routes.",
+  "theme_color": "#fff",
+  "icons": [{
+      "src": "images/touch/base192.png",
+      "sizes": "192x192"
+    }, {
+      "src": "images/touch/base512.png",
+      "sizes": "512x512"
+    }
+  ]
+}
