@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>My first vuejs application</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <!-- <div v-if="count % 2 == 0">The count is even {{ count }}</div> -->
+      <div style="display: none">
+        NEW LIST
+        <ul>
+          <li v-for="route in routes">
+            <a href="" style="color: purple">{{ route.name }}</a>
+            <div><b>{{ route.description }}</b></div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <form>
+          <div>
+            <label>first name</label>
+            <input v-model="firstname">
+            <div>{{ firstname }} </div>
+          </div>
+          <div>
+            <label>surname</label>
+            <input v-model="surname">
+            <div>{{ surname }}</div>
+          </div>
+          <div><button v-on:click="showAlert">submit</button></div>
+        </form>
+        <div>
+          Welcome to the club {{ firstname }} {{ surname }}
+        </div>
+      </div>
+
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
