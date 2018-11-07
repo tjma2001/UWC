@@ -3,7 +3,7 @@ const urlsToCache = [
   '/',
   '/bulma.min.css',
   '/index.html',
-  '/main.js',
+  '/main.js'
 ]
 
 const install = event => {
@@ -15,8 +15,8 @@ const install = event => {
 
 const fetchData = event => {
   event.respondWith(
-    caches.open(CACHE_NAME).then( cache => {
-      const getFromServer = () => 
+    caches.open(CACHE_NAME).then(cache => {
+      const getFromServer = () =>
         fetch(event.request)
           .then(networkResponse => {
             cache.put(event.request, networkResponse.clone())
