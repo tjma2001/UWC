@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" >
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <section class="section" id="app">
+      <div class="container has-text-centered is-size-1">{{ timer }}</div>
+      <div class="container">
+        <form class="form" v-on:submit.prevent>
+          <div class="field">
+            <label class="label">Number Guess</label>
+            <input class="input">
+          </div>
+          <div class="field">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="container has-text-centered is-size-1">
+        <span v-for="error in errors" :key="index" style="padding: 10px"><u>X</u></span>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
