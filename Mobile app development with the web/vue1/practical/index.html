@@ -5,7 +5,19 @@
   </head>
   <body>
     <div id="app">
-      
+      <h1>This is a form to guess the value from a user</h1>
+      <form v-on:submit.prevent>
+        <div>
+          <div><label>number</label></div>
+          <div>
+            <input v-model='userGuess'>
+          </div>
+        </div>
+
+        <div>
+          <button>submit</button>
+        </div>
+      </form>
     </div>
     <script src="script.js"></script>
   </body>
