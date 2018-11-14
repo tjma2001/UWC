@@ -4,6 +4,13 @@ function generateGuess() {
 
 const timerValue = 5
 
+Vue.component('button-counter', {
+  data: function() {
+    return { count: 0}
+  },
+  template: '<div>ass</div>'
+})
+
 const app = new Vue({
   el: "#app",
   data: {

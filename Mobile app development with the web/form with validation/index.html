@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" >
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="section" id="app">
+      <form class="form" v-on:submit.prevent>
+        <div class="field">
+          <label class="label">Username</label>
+          <input class="input" type="text" id="username" v-model="username" v-bind:class="{ 'is-danger': usernameError }"/>
+          <!-- <div class="has-text-danger" v-if="usernameError">{{ usernameErrorMessage }}</div> -->
+          <ul>
+            <li v-for="error in usernameErrorMessage">
+              {{ error.msg }} 
+              <span> 
+                <small>{{ new Date(error.date).toString() }}</small> 
+              </span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="field">
+          <label class="label">Password</label>
+          <input class="input" type="password" id="password" v-model="password" v-bind:class="{ 'is-danger': passwordError }"/>
+          <div class="has-text-danger" v-if="passwordError">There was an issue with your password</div>
+        </div>
+        
+        <div class="field">
+          <button class="button is-primary" type="submit" @click="login">Login</button>
+        </div>
+      </form>
+      <div>
+        Don't have an account?
+        <a href="">Register</a>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
