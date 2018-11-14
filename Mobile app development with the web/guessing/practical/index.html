@@ -7,23 +7,43 @@
     <section class="section">
       <div class="title has-text-centered">Guessing Game</div>
     </section>
+    
     <section class="section" id="app">
       <div class="container has-text-centered is-size-1">{{ timer }}</div>
       <div class="container">
         <form class="form" v-on:submit.prevent>
           <div class="field">
             <label class="label">Number Guess</label>
-            <input class="input">
+            <input class="input" v-model="userGuess">
           </div>
           <div class="field">
-            <button class="button is-primary">Submit</button>
+            <button class="button is-primary" v-on:click="enter">Submit</button>
           </div>
         </form>
       </div>
 
       <div class="container has-text-centered is-size-1">
-        <span v-for="error in errors" :key="index" style="padding: 10px"><u>X</u></span>
+        <span v-for="error in errors" style="padding: 10px"><u>X</u></span>
       </div>
+
+      <div class="modal" v-bind:class="{ 'is-active': showModal }">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          
+          <div class="box" style="background-color: white">
+            <div>
+              <span v-if="failure">You failed at the Game</span>
+              <span v-if="success">You won the game</span>
+              <div>{{ customMessage }}</div>
+            </div>
+            <button class="button is-primary">Ok</button>
+          </div>
+
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+      <button-counter />
+
     </section>
     <script src="script.js"></script>
   </body>

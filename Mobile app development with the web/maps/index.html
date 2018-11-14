@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app" class="section">
+      <form class="form" v-on:submit.prevent>
+        <div class="field">
+          <label class="label">Enter Address</label>
+          <input class="input" id="address search bar" v-model="address">
+        </div>
+        <button class="button" @click="search">Search</button>
+        <button class="button" @click="find">Find</button>
+      </form>
+
+      <div id="results_window" class="container">
+        <ul>
+          <li v-for="result in results" @click="klick(result)">
+            {{ result.label }}
+          </li>
+        </ul>
+      </div>
+
+      <div id="geo_results" class="container">
+        <div v-for="result in geoResults">
+          {{ result.Location.DisplayPosition }}
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
