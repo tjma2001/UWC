@@ -10,6 +10,7 @@
           <input class="input" id="address search bar" v-model="address">
         </div>
         <button class="button" @click="search">Search</button>
+        <button class="button" @click="find">Find</button>
       </form>
 
       <div id="results_window" class="container">
@@ -18,6 +19,12 @@
             {{ result.label }}
           </li>
         </ul>
+      </div>
+
+      <div id="geo_results" class="container">
+        <div v-for="result in geoResults">
+          {{ result.Location.DisplayPosition }}
+        </div>
       </div>
     </div>
 
