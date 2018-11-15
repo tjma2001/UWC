@@ -22,22 +22,30 @@ var app = new Vue({
     data: {
         startAddress: '',
         destinationAddress: '',
+        isStart: true,
         autoCompleteResults: [],
         startPoint: undefined
     },
     methods: {
-        autocomplete: function () {
+        autocomplete: function (isStart) {
             var _this = this
-            if(this.startAddress.length < 5) {
+            var text = this.startAddress
+
+            if (isStart == false) {
+                text = this.destinationAddress
+            }
+
+            if(text.length < 5) {
                 return false
             }
 
-            fetch(autocompleteUrl + this.startAddress)
+            fetch(autocompleteUrl + text)
                 .then(function (response) {
                     return response.json()
                 })
                 .then(function (response) {
                     _this.autoCompleteResults = response.suggestions
+                    _this.isStart = isStart
                 })
         },
         resultSelect: function (result) {
@@ -48,8 +56,13 @@ var app = new Vue({
                 })
                 .then(function (response) {
                     var location = response.Response.View[0].Result[0].Location.DisplayPosition
-                    _this.startPoint = L.marker([location.Latitude, location.Longitude]).addTo(map)
-                    _this.autoCompleteResults = []                    
+                    if(_this.isStart == true) {
+                        _this.startPoint = L.marker([location.Latitude, location.Longitude]).addTo(map)
+                        _this.autoCompleteResults = []
+                    } else {
+                        _this.desinationPoint = L.marker([location.Latitude, location.Longitude]).addTo(map)
+                        _this.autoCompleteResults = []
+                    }
                 })
         }
     }
