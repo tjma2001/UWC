@@ -23,23 +23,33 @@ var app = new Vue({
         startAddress: '',
         destinationAddress: '',
         autoCompleteResults: [],
-        geoResults: [],
+        startPoint: undefined
     },
     methods: {
         autocomplete: function () {
             var _this = this
-            console.log(autocompleteUrl)
-            console.log(autocompleteUrl + this.startAddress)
+            if(this.startAddress.length < 5) {
+                return false
+            }
 
             fetch(autocompleteUrl + this.startAddress)
                 .then(function (response) {
-                    console.log('response', response)
                     return response.json()
                 })
                 .then(function (response) {
-                    console.log('response', response)
-                    console.log('suggestions', response.suggestions)
                     _this.autoCompleteResults = response.suggestions
+                })
+        },
+        resultSelect: function (result) {
+            var _this = this
+            fetch(geocodeUrl + result.label)
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (response) {
+                    var location = response.Response.View[0].Result[0].Location.DisplayPosition
+                    _this.startPoint = L.marker([location.Latitude, location.Longitude]).addTo(map)
+                    _this.autoCompleteResults = []                    
                 })
         }
     }

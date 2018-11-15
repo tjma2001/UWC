@@ -42,17 +42,21 @@
         <div id="innersearch">
           <form v-on:submit.prevent>
             <div>
-              <input placeholder="start" v-model="startAddress">
+              <input 
+                placeholder="start" 
+                v-model="startAddress" 
+                v-on:keyup="autocomplete">
             </div>
             <div>
               <input placeholder="end" v-model="destinationAddress">
             </div>
-            <button @click="autocomplete">Search</button>
+            <button >Search</button>
           </form>
           
         </div>
       </div>
-      <div v-for="result in autoCompleteResults">
+      
+      <div v-for="result in autoCompleteResults" @click="resultSelect(result)">
         {{ result.label }}
       </div>
       
