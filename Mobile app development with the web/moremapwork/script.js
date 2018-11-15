@@ -22,9 +22,12 @@ var app = new Vue({
     data: {
         startAddress: '',
         destinationAddress: '',
+        startLocation: undefined,
+        destinationLocation: undefined,
         isStart: true,
         autoCompleteResults: [],
-        startPoint: undefined
+        startPoint: undefined,
+        destinationPoint: undefined
     },
     methods: {
         autocomplete: function (isStart) {
@@ -57,13 +60,20 @@ var app = new Vue({
                 .then(function (response) {
                     var location = response.Response.View[0].Result[0].Location.DisplayPosition
                     if(_this.isStart == true) {
-                        _this.startPoint = L.marker([location.Latitude, location.Longitude]).addTo(map)
+                        _this.startPoint = L.marker([location.Latitude, location.Longitude])
+                        _this.startPoint.addTo(map)
+                        _this.startLocation = location
                         _this.autoCompleteResults = []
                     } else {
-                        _this.desinationPoint = L.marker([location.Latitude, location.Longitude]).addTo(map)
+                        _this.destinationPoint = L.marker([location.Latitude, location.Longitude])
+                        _this.destinationPoint.addTo(map)
+                        _this.destinationLocation = location
                         _this.autoCompleteResults = []
                     }
                 })
+        },
+        search: function () {
+            // will connect to the whereismytransport api and get some results and do things with it.
         }
     }
 })
