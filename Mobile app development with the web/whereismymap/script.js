@@ -1,3 +1,5 @@
+// https://leafletjs.com/reference-1.3.4.html#polyline
+
 var map = L.map('map').setView([-33.91, 18.41], 11)
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -144,11 +146,21 @@ var app = new Vue({
                 body: JSON.stringify(ourBody) 
             })
             .then(function(response){
-                console.log(response)
+                // console.log(response)
                 return response.json()
             })
             .then(function(response) {
                 console.log(response)
+
+                var itineraries = response.itineraries
+                if(itineraries.length > 0) {
+                    var legs = itineraries[0].legs
+                    for(var i = 0; i < legs.length; i++) {
+                        console.log('geometry', legs[i].geometry.coordinates)
+                        var coorindates = legs[i].geometry.coordinates
+
+                    }
+                }
             })
         }
     }
